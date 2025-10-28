@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 data "aws_vpc" "default" {
@@ -87,8 +87,8 @@ resource "aws_security_group" "http_server_sg" {
 }
 
 resource "aws_instance" "http_server" {
-  ami                         = "ami-07860a2d7eb515d9a"
-  instance_type               = "t3.medium"
+  ami                         = "ami-00af95fa354fdb788"
+  instance_type               = "t3.micro"
   key_name                    = aws_key_pair.generated_key.key_name
   subnet_id                   = data.aws_subnets.default.ids[0]
   vpc_security_group_ids      = [aws_security_group.http_server_sg.id]
